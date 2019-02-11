@@ -1,0 +1,428 @@
+package org.appinventor;
+import com.google.appinventor.components.runtime.HandlesEventDispatching;
+import com.google.appinventor.components.runtime.EventDispatcher;
+import com.google.appinventor.components.runtime.Form;
+import com.google.appinventor.components.runtime.Component;
+import com.google.appinventor.components.runtime.HorizontalArrangement;
+import com.google.appinventor.components.runtime.Button;
+import com.google.appinventor.components.runtime.TextBox;
+import com.google.appinventor.components.runtime.Image;
+import com.google.appinventor.components.runtime.Label;
+import com.google.appinventor.components.runtime.CheckBox;
+import com.google.appinventor.components.runtime.ListPicker;
+import com.google.appinventor.components.runtime.WebViewer;
+import com.google.appinventor.components.runtime.TinyWebDB;
+import com.google.appinventor.components.runtime.Notifier;
+import com.google.appinventor.components.runtime.BluetoothClient;
+import com.google.appinventor.components.runtime.Clock;
+import com.google.appinventor.components.runtime.Twitter;
+import java.util.ArrayList;
+import android.content.Intent;
+import java.util.List;
+import com.google.appinventor.components.runtime.util.YailList;
+class Screen1 extends Form implements HandlesEventDispatching {
+  private HorizontalArrangement HorizontalArrangement8;
+  private Button Button3;
+  private TextBox FoodName;
+  private Button Button2;
+  private Image Image1;
+  private Button Button4;
+  private Button Button5;
+  private HorizontalArrangement HorizontalArrangement5;
+  private Button Button1;
+  private Label Label2;
+  private Label Label1;
+  private Label Food_Title;
+  private CheckBox CheckBox1;
+  private Label foodlabel;
+  private HorizontalArrangement HorizontalArrangement3;
+  private Label calorieslabel;
+  private Label fatslabel;
+  private Label cholesterolLabel;
+  private Label sodiumLabel;
+  private Label carbslabel;
+  private Label proteinlabel;
+  private ListPicker ListPicker1;
+  private Button FakeLoad;
+  private TextBox InputLabel;
+  private Label LoadLabel;
+  private HorizontalArrangement HorizontalArrangement6;
+  private Button CalculateButton;
+  private Button Store;
+  private TextBox graphfats;
+  private TextBox graphscholesterol;
+  private TextBox graphsodium;
+  private TextBox graphcrabs;
+  private TextBox graphprotien;
+  private HorizontalArrangement HorizontalArrangement4;
+  private Label calcCalories;
+  private Label calcFats;
+  private Label calcCholesterol;
+  private Label calcCarbs;
+  private Label calcSodium;
+  private Label calcProtein;
+  private HorizontalArrangement HorizontalArrangement7;
+  private Label Label3;
+  private Label TotalLabel;
+  private HorizontalArrangement HorizontalArrangement9;
+  private ListPicker ChooseChart;
+  private Button CreateChart;
+  private WebViewer WebViewer1;
+  private TextBox TextBox3;
+  private TinyWebDB TinyWebDB1;
+  private Notifier Notifier1;
+  private BluetoothClient BluetoothClient1;
+  private Clock Clock1;
+  private Twitter Twitter1;
+  private ArrayList<Object> macrolist;
+  private ArrayList<Object> FoodList;
+  private ArrayList<Object> CaloriesList;
+  private ArrayList<Object> FatsList;
+  private ArrayList<Object> CholesterolList;
+  private ArrayList<Object> SodiumList;
+  private ArrayList<Object> CarbsList;
+  private ArrayList<Object> ProteinsList;
+  private String s;
+  private ArrayList<Object> Charts;
+  protected void $define() {
+    this.AlignHorizontal(3);
+    this.AppName("arraytinyweb");
+    this.BackgroundColor(0x00000000);
+    this.BackgroundImage("baksidfhsaiuhfusidhfsd.jpg");
+    this.Scrollable(true);
+    this.Title("Weigh Food");
+    HorizontalArrangement8 = new HorizontalArrangement(this);
+    Button3 = new Button(HorizontalArrangement8);
+    Button3.Text("  0");
+    FoodName = new TextBox(HorizontalArrangement8);
+    FoodName.Hint("Type Required Food");
+    Button2 = new Button(HorizontalArrangement8);
+    Button2.FontBold(true);
+    Button2.FontItalic(true);
+    Button2.Text("Database");
+    Image1 = new Image(this);
+    Image1.Height(20);
+    Image1.Width(20);
+    Image1.Picture("mic.png");
+    Image1.Visible(false);
+    Button4 = new Button(this);
+    Button4.Text("Screen 2");
+    Button5 = new Button(this);
+    Button5.Text("Screen 3");
+    HorizontalArrangement5 = new HorizontalArrangement(this);
+    Button1 = new Button(HorizontalArrangement5);
+    Button1.Text("Confirm");
+    Label2 = new Label(HorizontalArrangement5);
+    Label2.HasMargins(false);
+    Label2.Visible(false);
+    Label1 = new Label(this);
+    Label1.HasMargins(false);
+    Label1.Visible(false);
+    Food_Title = new Label(this);
+    Food_Title.FontSize(20);
+    Food_Title.HasMargins(false);
+    Food_Title.Text("Food Name:");
+    CheckBox1 = new CheckBox(this);
+    CheckBox1.Text("Text for CheckBox1");
+    CheckBox1.Visible(false);
+    foodlabel = new Label(this);
+    foodlabel.FontBold(true);
+    foodlabel.FontSize(24);
+    foodlabel.HasMargins(false);
+    foodlabel.Width(100);
+    HorizontalArrangement3 = new HorizontalArrangement(this);
+    HorizontalArrangement3.Height(30);
+    calorieslabel = new Label(HorizontalArrangement3);
+    calorieslabel.FontBold(true);
+    calorieslabel.FontSize(24);
+    calorieslabel.HasMargins(false);
+    calorieslabel.Height(30);
+    fatslabel = new Label(HorizontalArrangement3);
+    fatslabel.FontBold(true);
+    fatslabel.FontSize(24);
+    fatslabel.HasMargins(false);
+    fatslabel.Height(30);
+    cholesterolLabel = new Label(HorizontalArrangement3);
+    cholesterolLabel.FontSize(24);
+    cholesterolLabel.HasMargins(false);
+    cholesterolLabel.Height(30);
+    sodiumLabel = new Label(HorizontalArrangement3);
+    sodiumLabel.FontSize(24);
+    sodiumLabel.HasMargins(false);
+    sodiumLabel.Height(30);
+    carbslabel = new Label(HorizontalArrangement3);
+    carbslabel.FontBold(true);
+    carbslabel.FontSize(24);
+    carbslabel.HasMargins(false);
+    carbslabel.Height(30);
+    proteinlabel = new Label(HorizontalArrangement3);
+    proteinlabel.FontBold(true);
+    proteinlabel.FontSize(24);
+    proteinlabel.HasMargins(false);
+    proteinlabel.Height(30);
+    ListPicker1 = new ListPicker(this);
+    ListPicker1.FontBold(true);
+    ListPicker1.Text("Choose Bluetooth");
+    FakeLoad = new Button(this);
+    FakeLoad.Width(150);
+    FakeLoad.Text("Fake Load Value");
+    InputLabel = new TextBox(this);
+    InputLabel.BackgroundColor(0xFF888888);
+    InputLabel.Width(150);
+    InputLabel.Hint("Bluetrooth Not Connected, enter weight manually.");
+    InputLabel.NumbersOnly(true);
+    LoadLabel = new Label(this);
+    LoadLabel.BackgroundColor(0xFFCCCCCC);
+    LoadLabel.FontBold(true);
+    LoadLabel.FontItalic(true);
+    LoadLabel.FontSize(24);
+    LoadLabel.HasMargins(false);
+    LoadLabel.Height(30);
+    LoadLabel.Width(100);
+    HorizontalArrangement6 = new HorizontalArrangement(this);
+    CalculateButton = new Button(HorizontalArrangement6);
+    CalculateButton.FontBold(true);
+    CalculateButton.FontItalic(true);
+    CalculateButton.Text("Calculate");
+    Store = new Button(HorizontalArrangement6);
+    Store.FontBold(true);
+    Store.FontItalic(true);
+    Store.Text("Add To Total");
+    graphfats = new TextBox(this);
+    graphfats.Hint("Hint for TextBox5");
+    graphfats.Visible(false);
+    graphscholesterol = new TextBox(this);
+    graphscholesterol.Hint("Hint for TextBox3");
+    graphscholesterol.Visible(false);
+    graphsodium = new TextBox(this);
+    graphsodium.Hint("Hint for TextBox4");
+    graphsodium.Visible(false);
+    graphcrabs = new TextBox(this);
+    graphcrabs.Hint("Hint for TextBox6");
+    graphcrabs.Visible(false);
+    graphprotien = new TextBox(this);
+    graphprotien.Hint("Hint for TextBox7");
+    graphprotien.Visible(false);
+    HorizontalArrangement4 = new HorizontalArrangement(this);
+    calcCalories = new Label(HorizontalArrangement4);
+    calcCalories.FontBold(true);
+    calcCalories.FontSize(14);
+    calcCalories.HasMargins(false);
+    calcFats = new Label(HorizontalArrangement4);
+    calcFats.FontBold(true);
+    calcFats.HasMargins(false);
+    calcCholesterol = new Label(HorizontalArrangement4);
+    calcCholesterol.HasMargins(false);
+    calcCarbs = new Label(HorizontalArrangement4);
+    calcCarbs.FontBold(true);
+    calcCarbs.HasMargins(false);
+    calcSodium = new Label(HorizontalArrangement4);
+    calcSodium.HasMargins(false);
+    calcProtein = new Label(HorizontalArrangement4);
+    calcProtein.FontBold(true);
+    calcProtein.HasMargins(false);
+    HorizontalArrangement7 = new HorizontalArrangement(this);
+    Label3 = new Label(HorizontalArrangement7);
+    Label3.FontBold(true);
+    Label3.HasMargins(false);
+    Label3.Text("Total Calories:");
+    TotalLabel = new Label(HorizontalArrangement7);
+    TotalLabel.FontSize(20);
+    TotalLabel.HasMargins(false);
+    TotalLabel.Text("0");
+    HorizontalArrangement9 = new HorizontalArrangement(this);
+    ChooseChart = new ListPicker(HorizontalArrangement9);
+    ChooseChart.Text("Chosen Chart: None");
+    CreateChart = new Button(HorizontalArrangement9);
+    CreateChart.Text("Create Chart");
+    WebViewer1 = new WebViewer(this);
+    TextBox3 = new TextBox(this);
+    TextBox3.BackgroundColor(0x00FFFFFF);
+    TextBox3.FontBold(true);
+    TextBox3.FontSize(16);
+    TextBox3.FontTypeface(1);
+    TextBox3.Height(LENGTH_FILL_PARENT);
+    TextBox3.Width(LENGTH_FILL_PARENT);
+    TextBox3.MultiLine(true);
+    TinyWebDB1 = new TinyWebDB(this);
+    TinyWebDB1.ServiceURL("http://useful-autumn-121611.appspot.com/");
+    Notifier1 = new Notifier(this);
+    BluetoothClient1 = new BluetoothClient(this);
+    Clock1 = new Clock(this);
+    Clock1.TimerInterval(950);
+    Twitter1 = new Twitter(this);
+    macrolist = new ArrayList<Object>();
+    FoodList = new ArrayList<Object>();
+    CaloriesList = new ArrayList<Object>();
+    FatsList = new ArrayList<Object>();
+    CholesterolList = new ArrayList<Object>();
+    SodiumList = new ArrayList<Object>();
+    CarbsList = new ArrayList<Object>();
+    ProteinsList = new ArrayList<Object>();
+    s = "";
+    Charts = new ArrayList<Object>();
+    Charts.add("3D Pie Chart");
+    Charts.add("2D Pie Chart");
+    Charts.add("Scatter Plot");
+    Charts.add("2D Pie Chart");
+    Charts.add("2D Pie Chart");
+    EventDispatcher.registerEventForDelegation(this, "ClickEvent", "Click" );
+    EventDispatcher.registerEventForDelegation(this, "InitializeEvent", "Initialize" );
+    EventDispatcher.registerEventForDelegation(this, "AfterPickingEvent", "AfterPicking" );
+    EventDispatcher.registerEventForDelegation(this, "TimerEvent", "Timer" );
+    EventDispatcher.registerEventForDelegation(this, "GotValueEvent", "GotValue" );
+    EventDispatcher.registerEventForDelegation(this, "BeforePickingEvent", "BeforePicking" );
+  }
+  public boolean dispatchEvent(Component component, String componentName, String eventName, Object[] params){
+    if( component.equals(CalculateButton) && eventName.equals("Click") ){
+      CalculateButtonClick();
+      return true;
+    }
+    if( component.equals(Button4) && eventName.equals("Click") ){
+      Button4Click();
+      return true;
+    }
+    if( component.equals(Button1) && eventName.equals("Click") ){
+      Button1Click();
+      return true;
+    }
+    if( component.equals(Button5) && eventName.equals("Click") ){
+      Button5Click();
+      return true;
+    }
+    if( component.equals(this) && eventName.equals("Initialize") ){
+      thisInitialize();
+      return true;
+    }
+    if( component.equals(ListPicker1) && eventName.equals("AfterPicking") ){
+      ListPicker1AfterPicking();
+      return true;
+    }
+    if( component.equals(Clock1) && eventName.equals("Timer") ){
+      Clock1Timer();
+      return true;
+    }
+    if( component.equals(TinyWebDB1) && eventName.equals("GotValue") ){
+      TinyWebDB1GotValue((String)params[0], (Object)params[1]);
+      return true;
+    }
+    if( component.equals(ListPicker1) && eventName.equals("BeforePicking") ){
+      ListPicker1BeforePicking();
+      return true;
+    }
+    if( component.equals(Store) && eventName.equals("Click") ){
+      StoreClick();
+      return true;
+    }
+    if( component.equals(Button2) && eventName.equals("Click") ){
+      Button2Click();
+      return true;
+    }
+    if( component.equals(CreateChart) && eventName.equals("Click") ){
+      CreateChartClick();
+      return true;
+    }
+    if( component.equals(FakeLoad) && eventName.equals("Click") ){
+      FakeLoadClick();
+      return true;
+    }
+    if( component.equals(ChooseChart) && eventName.equals("BeforePicking") ){
+      ChooseChartBeforePicking();
+      return true;
+    }
+    if( component.equals(ChooseChart) && eventName.equals("AfterPicking") ){
+      ChooseChartAfterPicking();
+      return true;
+    }
+    return false;
+  }
+  public void CalculateButtonClick(){
+    calcCalories.Text(String.valueOf(String.valueOf(String.valueOf(((Integer.valueOf(calorieslabel.Text()) / 100) * Integer.valueOf(LoadLabel.Text()))))));
+    calcFats.Text(String.valueOf(String.valueOf(String.valueOf(((Integer.valueOf(fatslabel.Text()) / 100) * Integer.valueOf(LoadLabel.Text()))))));
+    calcCholesterol.Text(String.valueOf(String.valueOf(String.valueOf(((Integer.valueOf(cholesterolLabel.Text()) / 100) * Integer.valueOf(LoadLabel.Text()))))));
+    calcSodium.Text(String.valueOf(String.valueOf(String.valueOf(((Integer.valueOf(sodiumLabel.Text()) / 100) * Integer.valueOf(LoadLabel.Text()))))));
+    calcCarbs.Text(String.valueOf(String.valueOf(String.valueOf(((Integer.valueOf(carbslabel.Text()) / 100) * Integer.valueOf(LoadLabel.Text()))))));
+    calcProtein.Text(String.valueOf(String.valueOf(String.valueOf(((Integer.valueOf(proteinlabel.Text()) / 100) * Integer.valueOf(LoadLabel.Text()))))));
+  }
+  public void Button4Click(){
+    startActivity(new Intent().setClass(this, Screen2.class));
+  }
+  public void Button1Click(){
+    TinyWebDB1.GetValue(String.valueOf(FoodName.Text()).toLowerCase());
+    calorieslabel.Text(String.valueOf(((List)macrolist).get(1 - 1)));
+    fatslabel.Text(String.valueOf(((List)macrolist).get(2 - 1)));
+    cholesterolLabel.Text(String.valueOf(((List)macrolist).get(3 - 1)));
+    sodiumLabel.Text(String.valueOf(((List)macrolist).get(4 - 1)));
+    carbslabel.Text(String.valueOf(((List)macrolist).get(5 - 1)));
+    proteinlabel.Text(String.valueOf(((List)macrolist).get(6 - 1)));
+  }
+  public void Button5Click(){
+    startActivity(new Intent().setClass(this, Screen3.class));
+  }
+  public void thisInitialize(){
+    TinyWebDB1.GetValue("*all_tags*");
+    Button3.Image(Image1.Visible());
+  }
+  public void ListPicker1AfterPicking(){
+    ListPicker1.Selection(BluetoothClient1.Connect(ListPicker1.Selection()));
+  }
+  public void Clock1Timer(){
+    if(BluetoothClient1.IsConnected()){
+      Label1.Text(0);
+      ListPicker1.Text("Bluetooth: Connected");
+      ListPicker1.TextColor(COLOR_BLUE);
+      InputLabel.Visible(false);
+      LoadLabel.Visible(true);
+    }
+    if(!(BluetoothClient1.IsConnected())){
+      ListPicker1.Text("Bluetooth: Not Connected");
+      ListPicker1.TextColor(COLOR_BLUE);
+      InputLabel.Visible(true);
+      LoadLabel.Visible(false);
+    }
+  }
+  public void TinyWebDB1GotValue(String tagFromWebDB, Object valueFromWebDB){
+    if(tagFromWebDB==Integer.valueOf(String.valueOf(FoodName.Text()).toLowerCase())){
+      macrolist = (ArrayList<Object>) valueFromWebDB;
+    }
+    else {
+    }
+  }
+  public void ListPicker1BeforePicking(){
+    ListPicker1.Elements(YailList.makeList(BluetoothClient1.AddressesAndNames()));
+  }
+  public void StoreClick(){
+    TotalLabel.Text(String.valueOf(String.valueOf(String.valueOf((Integer.valueOf(TotalLabel.Text()) + Integer.valueOf(calcCalories.Text()))))));
+  }
+  public void Button2Click(){
+    startActivity(new Intent().setClass(this, Screen2.class));
+  }
+  public void CreateChartClick(){
+    s = (String) calcFats.Text() + "," + calcCholesterol.Text() + "," + calcSodium.Text() + "," + calcCarbs.Text() + "," + calcProtein.Text();
+    if(ChooseChart.Selection().equals("3D Pie Chart")){
+      pie3d();
+    }
+    if(ChooseChart.Selection().equals("2D Pie Chart")){
+      pie2d();
+    }
+    if(ChooseChart.Selection().equals("Scatter Plot")){
+      scatter();
+    }
+    TextBox3.Text("For the selected food  " + FoodName.Text() + " per serving of " + InputLabel.Text() + " Grams there are " + calcCalories.Text() + " Calories, Total Fat " + calcFats.Text() + "g, Cholesterol " + calcCholesterol.Text() + "g, Sodium " + calcSodium.Text() + "g, Carbohydrates " + calcCarbs.Text() + "g, Protein " + calcProtein.Text() + "g.");
+  }
+  public void FakeLoadClick(){
+    LoadLabel.Text(InputLabel.Text());
+  }
+  public void ChooseChartBeforePicking(){
+    ChooseChart.Elements(Charts);
+  }
+  public void ChooseChartAfterPicking(){
+    ChooseChart.Text("Chosen Chart: " + ChooseChart.Selection());
+  }
+  public void pie3d(){
+  }
+  public void pie2d(){
+  }
+  public void scatter(){
+  }
+}
